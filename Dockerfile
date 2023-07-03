@@ -4,6 +4,8 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./requitments.txt /requitments.txt
 
+RUN apk add --update --no-cache postgresql-client build-base postgresql-dev
+
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip&& \
     /py/bin/pip install -r /requitments.txt
