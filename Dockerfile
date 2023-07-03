@@ -1,4 +1,4 @@
-FROM python:3.11.1-alphine3.17
+FROM python:3.11.4-alpine3.18
 
 ENV PYTHONUNBUFFERED 1
 
