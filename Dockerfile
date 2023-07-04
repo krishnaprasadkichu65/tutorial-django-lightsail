@@ -1,4 +1,4 @@
-FROM python:3.11.4-alpine3.18
+FROM python:3.11.1-alpine3.17
 
 ENV PYTHONUNBUFFERED 1
 
@@ -10,7 +10,14 @@ RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip&& \
     /py/bin/pip install -r /requitments.txt
 
-ENV PATH="/py/bin:$PATH"
+COPY ./scripts /scripts
+RUN chmod -R +x /scripts
+
+ENV PATH="/scripts:/py/bin:$PATH"
 
 COPY ./app /app
 WORKDIR /app
+
+EXPOSE 80
+
+CMD ["/scripts/run.sh"]
